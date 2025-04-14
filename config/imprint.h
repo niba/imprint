@@ -32,7 +32,7 @@
  */
 
 // Define a helper macro for layer definition
-#define IMPRINT_LAYER3ame, start, mid, end, thumb_inner, thumb_outer) \
+#define IMPRINT_LAYER(name, start, mid, end, thumb_inner, thumb_outer) \
   ZMK_LAYER(name, start thumb_inner mid thumb_outer end)
 
 /* Left side key positions */

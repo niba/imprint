@@ -40,9 +40,9 @@ ZMK_APPLY_MATRIX_TRANSFORM(imprint_function_row)
 };
 
 &lt {
-  flavor = "balanced";
-  tapping-term-ms = <200>;
-  quick-tap-ms = <QUICK_TAP_MS>;
+  flavor = "hold-preferred";
+  tapping-term-ms = <140>;
+  quick-tap-ms = <140>;
 };
 
 #define KEYS_L \

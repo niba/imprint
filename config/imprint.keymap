@@ -30,6 +30,15 @@ ZMK_APPLY_MATRIX_TRANSFORM(imprint_function_row)
 
 #define QUICK_TAP_MS 150
 
+/* / { */
+/*   scroll-config { */
+/*     compatible = "zmk,scroll-config"; */
+/*     scroll-ticks-per-scroll-unit = <1>; */
+/*     scroll-interval-ms = <8>; */
+/*     scroll-delay-ms = <16>; */
+/*   }; */
+/* }; */
+
 &sk {
   release-after-ms = <900>;
   quick-release;

@@ -56,8 +56,8 @@ ZMK_APPLY_MATRIX_TRANSFORM(imprint_function_row)
 
 &lt {
   flavor = "balanced";
-  tapping-term-ms = <150>;
-  quick-tap-ms = <100>;
+  tapping-term-ms = <175>;
+  quick-tap-ms = <125>;
 };
 
 #define KEYS_L \
@@ -84,7 +84,7 @@ ZMK_APPLY_MATRIX_TRANSFORM(imprint_function_row)
 
 #define MAKE_HRM(NAME, HOLD, TAP, TRIGGER_POS)                                 \
   ZMK_HOLD_TAP(NAME, bindings = <HOLD>, <TAP>; flavor = "balanced";            \
-               tapping-term-ms = <200>; quick-tap-ms = <QUICK_TAP_MS>;         \
+               tapping-term-ms = <280>; quick-tap-ms = <QUICK_TAP_MS>;         \
                require-prior-idle-ms = <150>; hold-trigger-on-release;         \
                hold-trigger-key-positions = <TRIGGER_POS>;)
 

@@ -1,7 +1,7 @@
 manifest:
   remotes:
     - name: zmkfirmware
-      url-base: https://github.com/niba
+      url-base: https://github.com/zmkfirmware
     - name: Cyboard-DigitalTailor
       url-base: https://github.com/Cyboard-DigitalTailor
     - name: urob
@@ -9,7 +9,7 @@ manifest:
   projects:
     - name: zmk
       remote: zmkfirmware
-      revision: feature/overlap_threshold
+      revision: main
       import: app/west.yml
     - name: zmk-keyboards
       remote: Cyboard-DigitalTailor

@@ -94,8 +94,9 @@ MAKE_HRM(hmr, &kp, &kp, KEYS_L THUMBS) // Right-hand HRMs.
 ZMK_MACRO(prev_q, bindings = <&kp LBKT &kp Q>;)
 ZMK_MACRO(next_q, bindings = <&kp RBKT &kp Q>;)
 
+// Control + D on macos
 ZMK_MOD_MORPH(bs_del, bindings = <&kp BSPC>, <&kp DEL>;
-    mods = <(MOD_LSFT|MOD_RSFT)>; keep-mods = <MOD_RSFT>;)
+mods = <(MOD_LSFT|MOD_RSFT)>; keep-mods = <MOD_RSFT>;)
 
 ZMK_TRI_STATE(swapper, bindings = <&kt LCTRL>, <&kp TAB>, <&kt LCTRL>;
     ignored-key-positions = <RH2 RM2 RM1 RM3 RM4>;)
@@ -139,7 +140,7 @@ ZMK_BASE_LAYER(Base,
 //                                    ╰─────────────────┴─────────────────┼                                                                           ├─────────────────┼─────────────────╯
                                                           &lt SYMBOLS SPACE  &mt LSHIFT ESC  &kp RGUI          ,    &mkp LCLK          MAGIC_SHIFT      &lt NAV RET       ,
 //                                                      ╰─────────────────┴─────────────────┼─────────────────┤   ├─────────────────┼─────────────────┼─────────────────╯
-                                                          &bs_del           XXX              &kp RET           ,    &mo SYMBOLS         XXX             &kp TAB
+                                                          &kp BSPC          XXX              &kp RET           ,    &mo SYMBOLS         XXX             &mt RALT TAB
 //                                                      ╰─────────────────┴─────────────────┴─────────────────╯   ╰─────────────────┴─────────────────┴─────────────────╯
 )
 

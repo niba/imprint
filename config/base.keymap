@@ -1,0 +1,68 @@
+#define _BT_SEL_KEYS_                                                        \
+    &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_CLR
+
+#define BASE 0
+#define NAV 1
+#define SYMBOLS 2
+
+#define XXX &none
+#define ___ &trans
+
+#define QUICK_TAP_MS 150
+
+&sk {
+  release-after-ms = <900>;
+  quick-release;
+};
+
+&sl { // Allow sticky mods to chord across sticky layers.
+ignore-modifiers;
+};
+
+/* &lt { */
+/*   flavor = "hold-preferred"; */
+/*   tapping-term-ms = <200>; */
+/*   quick-tap-ms = <QUICK_TAP_MS>; */
+/* }; */
+
+&lt {
+  flavor = "balanced";
+  tapping-term-ms = <175>;
+  quick-tap-ms = <125>;
+};
+
+#define MAKE_HRM(NAME, HOLD, TAP, TRIGGER_POS)                                 \
+  ZMK_HOLD_TAP(NAME, bindings = <HOLD>, <TAP>; flavor = "balanced";            \
+               quick-tap-ms = <QUICK_TAP_MS>; tapping-term-ms = <280>;         \
+               require-prior-idle-ms = <150>; hold-trigger-on-release;         \
+               hold-trigger-key-positions = <TRIGGER_POS>;)
+
+MAKE_HRM(hml, &kp, &kp, KEYS_R THUMBS) // Left-hand HRMs.
+MAKE_HRM(hmr, &kp, &kp, KEYS_L THUMBS) // Right-hand HRMs.
+
+ZMK_MACRO(prev_q, bindings = <&kp LBKT &kp Q>;)
+ZMK_MACRO(next_q, bindings = <&kp RBKT &kp Q>;)
+
+// Control + D on macos
+ZMK_MOD_MORPH(bs_del, bindings = <&kp BSPC>, <&kp DEL>;
+mods = <(MOD_LSFT|MOD_RSFT)>; keep-mods = <MOD_RSFT>;)
+
+ZMK_TRI_STATE(swapper, bindings = <&kt LCTRL>, <&kp TAB>, <&kt LCTRL>;
+    ignored-key-positions = <RH2 RM2 RM1 RM3 RM4>;)
+
+/* ZMK_MOD_MORPH(hyper, bindings = <&kp LC(LA(LG(KC_SPC)))>;) */
+#define HYPER LC(LA(LGUI))
+/* Magic-shift & auto-layers */
+
+// Tap: repeat after alpha, else sticky-shift |
+// Shift + tap/ double-tap: caps-word | Hold: shift.
+#define MAGIC_SHIFT &magic_shift LSHFT 0
+ZMK_HOLD_TAP(magic_shift, bindings = <&kp>, <&magic_shift_tap>;
+    flavor = "balanced"; tapping-term-ms = <200>;
+    quick-tap-ms = <QUICK_TAP_MS>;)
+ZMK_MOD_MORPH(magic_shift_tap, bindings = <&sk LSHIFT>, <&caps_word>;
+    mods = <(MOD_LSFT)>;)
+&caps_word { // Mods deactivate caps-word, requires PR #1451. [TODO: rebase]
+  /delete-property/ ignore-modifiers;
+};
+// SHIFT END
